@@ -20,10 +20,13 @@ export const pageInfoSlice = createSlice({
     },
     decrement: (state) => {
       state.index -= 1
+    },
+    reset: (state) => {
+      state.index = 0;
     }
   },
 })
 
-export const { increment, decrement, incrementByAmount } = pageInfoSlice.actions
+export const { increment, decrement, reset } = pageInfoSlice.actions;
 
-export default pageInfoSlice.reducer
+export default pageInfoSlice.reducer;

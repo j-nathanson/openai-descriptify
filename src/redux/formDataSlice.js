@@ -19,7 +19,7 @@ export const formDataSlice = createSlice({
         setProductName: (state, action) => {
             state.productName = action.payload;
         },
-        setBenefit: (state, action) => {
+        setIdealUsers: (state, action) => {
             state.idealUsers = action.payload;
         },
         setBenefits: (state, action) => {
@@ -34,6 +34,6 @@ export const formDataSlice = createSlice({
     },
 })
 
-export const { setBasicDescription, setProductName, setIdealUsers, setBenefits, setFeatures } = formDataSlice.actions
+export const { setBasicDescription, setProductName, setIdealUsers, setBenefits, setFeatures } = formDataSlice.actions;
 
-export default formDataSlice.reducer
+export default formDataSlice.reducer;
