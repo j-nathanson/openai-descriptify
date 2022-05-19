@@ -6,7 +6,7 @@ const initialState = {
     idealUsers: '',
     benefits: '',
     features: '',
-    engine: ''
+    engine: 'text-curie-001'
 }
 
 export const formDataSlice = createSlice({
@@ -31,9 +31,12 @@ export const formDataSlice = createSlice({
         setEngine: (state, action) => {
             state.engine = action.payload;
         },
+        resetValues: (state) => {
+            state = initialState;
+        }
     },
 })
 
-export const { setBasicDescription, setProductName, setIdealUsers, setBenefits, setFeatures } = formDataSlice.actions;
+export const { setBasicDescription, setProductName, setIdealUsers, setBenefits, setFeatures, setEngine, resetValues } = formDataSlice.actions;
 
 export default formDataSlice.reducer;

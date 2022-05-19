@@ -27,9 +27,9 @@ export default function Form() {
             case 2:
                 return <IdealUsersPage />;
             case 3:
-                return <BenefitsPage />;
-            case 4:
                 return <FeaturesPage />;
+            case 4:
+                return  <BenefitsPage />;
             case 5:
                 return <EnginePage />;
             case 6:
@@ -49,23 +49,23 @@ export default function Form() {
     }
     return (
         <div>
-            <h1>{titles[index]}</h1>
+            <h2>{titles[index]}</h2>
             {PageDisplay()}
             <Button
-                aria-label="Decrement value"
+                aria-label="Previous Page"
                 onClick={() => dispatch(decrement())}
                 disabled={index === 0}
             >Prev
             </Button>
             <Button
-                aria-label="Increment value"
+                aria-label="Next Page"
                 onClick={handleClick}
             >{index === 5 ? 'Submit' : index === 6 ? 'Submit Again' : 'Next'}
             </Button>
             {
                 index === 6 && (
                     <Button
-                        aria-label="Increment value"
+                        aria-label="Next Page"
                         onClick={() => dispatch(reset())}>
                         Start Over
                     </Button>

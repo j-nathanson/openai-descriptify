@@ -8,7 +8,8 @@ const initialState = {
     'Who are your ideal users?',
     'What are the features of this product?',
     'What are the benefits of using this product?',
-    'Please choose an engine', 'your result']
+    'Please choose from one of GPT-3\'s Models',
+    'Your result']
 }
 
 export const pageInfoSlice = createSlice({
