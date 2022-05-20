@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { decrement, increment, reset } from '../redux/pageInfoSlice';
 import BasicDescriptionPage from './form-pages/BasicDescriptionPage';
@@ -8,28 +8,36 @@ import FeaturesPage from './form-pages/FeaturesPage';
 import IdealUsersPage from './form-pages/IdealUsersPage';
 import ProductNamePage from './form-pages/ProductNamePage';
 import Button from 'react-bootstrap/Button';
+import Spinner from 'react-bootstrap/Spinner';
 import ResponsePage from './form-pages/ResponsePage';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import postData from '../api/generate';
-import { pushNewResponse } from '../redux/responseSlice';
+import { pushNewResponse, setIsLoading } from '../redux/responseSlice';
 
 export default function Form() {
 
     const index = useSelector((state) => state.pageInfo.index);
     const titles = useSelector((state) => state.pageInfo.titles);
     const formData = useSelector(state => state.formData);
+    const isLoading = useSelector(state => state.responses.isLoading)
     let progressPercent = 0;
 
     const dispatch = useDispatch();
 
     async function handleSubmit(event) {
         event.preventDefault();
+
+        dispatch(setIsLoading(true));
         const response = await postData(formData);
+
+        dispatch(setIsLoading(false));
 
         dispatch(pushNewResponse({
             response,
             prompt: formData
         }))
+
+
     }
 
     const PageDisplay = () => {
@@ -93,6 +101,14 @@ export default function Form() {
                     </Button>
                 )
             }
+            {isLoading && (
+                <Spinner
+                    animation="border"
+                    variant='primary'
+                    role="status">
+                    <span className="visually-hidden">Loading...</span>
+                </Spinner>
+            )}
         </div>
     )
 }

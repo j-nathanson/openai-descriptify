@@ -1,6 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
+    isLoading: false,
     totalResponses: [
         {
             response: 'The Donner Dub-1 acoustic electric bass ukelele is perfect for musicians, hobbyists, and bass players. It has a mahogany finish and built-in tuner, making it easy to play. The weight of 3 lbs makes it portable and compact, while the rubber strings provide great sound.',
@@ -24,9 +25,12 @@ export const responseSlice = createSlice({
         pushNewResponse: (state, action) => {
             state.totalResponses.push(action.payload);
         },
+        setIsLoading: (state, action) => {
+            state.isLoading = action.payload;
+        }
     },
 })
 
-export const { pushNewResponse } = responseSlice.actions;
+export const { pushNewResponse, setIsLoading } = responseSlice.actions;
 
 export default responseSlice.reducer;
