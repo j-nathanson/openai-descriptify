@@ -9,14 +9,26 @@ import IdealUsersPage from './form-pages/IdealUsersPage';
 import ProductNamePage from './form-pages/ProductNamePage';
 import Button from 'react-bootstrap/Button';
 import ResponsePage from './form-pages/ResponsePage';
+import postData from '../api/generate';
+import { pushNewResponse } from '../redux/responseSlice';
 
 export default function Form() {
 
     const index = useSelector((state) => state.pageInfo.index);
     const titles = useSelector((state) => state.pageInfo.titles);
+    const formData = useSelector(state => state.formData);
 
     const dispatch = useDispatch();
 
+    async function handleSubmit(event) {
+        event.preventDefault();
+        const response= await postData(formData);
+
+        dispatch(pushNewResponse({
+            response,
+            prompt:formData
+        }))
+    }
 
     const PageDisplay = () => {
         switch (index) {
@@ -29,7 +41,7 @@ export default function Form() {
             case 3:
                 return <FeaturesPage />;
             case 4:
-                return  <BenefitsPage />;
+                return <BenefitsPage />;
             case 5:
                 return <EnginePage />;
             case 6:
@@ -39,12 +51,12 @@ export default function Form() {
         }
     };
 
-    const handleClick = () => {
+    const handleClick = (e) => {
         if (index <= 5) {
             dispatch(increment());
         }
         if (index >= 5) {
-            alert("submitted data");
+            handleSubmit(e);
         }
     }
     return (

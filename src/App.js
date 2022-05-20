@@ -1,5 +1,6 @@
 import Form from './components/Form.js';
 import Header from './components/Header.js';
+import Responses from './components/Responses.js';
 
 function App() {
   return (
@@ -7,8 +8,7 @@ function App() {
 
       <Header />
       <Form />
-
-      <div>results</div>
+      <Responses />
     </div>
 
 
