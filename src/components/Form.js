@@ -7,13 +7,15 @@ import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import postData from '../api/generate';
 import PageDisplay from './form-pages/PageDisplay';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 export default function Form() {
 
     const index = useSelector((state) => state.pageInfo.index);
     const titles = useSelector((state) => state.pageInfo.titles);
+    const percent = useSelector((state) => state.pageInfo.percent);
     const formData = useSelector(state => state.formData);
-    const isLoading = useSelector(state => state.responses.isLoading)
+    const isLoading = useSelector(state => state.responses.isLoading);
 
     const dispatch = useDispatch();
 
@@ -47,6 +49,7 @@ export default function Form() {
     return (
         <div className='container'>
             <h2>{titles[index]}</h2>
+            <ProgressBar animated now={percent} />
             <PageDisplay />
 
             <Button

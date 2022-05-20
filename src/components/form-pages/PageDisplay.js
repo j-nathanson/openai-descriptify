@@ -22,7 +22,7 @@ export default function PageDisplay() {
         case 1:
             return (
                 <CustomInput
-                    percentage={30}
+                    percentage={20}
                     rows={1}
                     placeholder='Sweet Dreams Kitty Pendant'
                     controlId='formProductName'
@@ -34,7 +34,7 @@ export default function PageDisplay() {
         case 2:
             return (
                 <CustomInput
-                    percentage={40}
+                    percentage={20}
                     rows={2}
                     placeholder='Cat lovers, children, fine crafts enthusiasts.'
                     controlId='formIdealUsers'
@@ -46,7 +46,7 @@ export default function PageDisplay() {
         case 3:
             return (
                 <CustomInput
-                    percentage={60}
+                    percentage={20}
                     rows={2}
                     placeholder='Sterling silver, 11-inch chain, handcrafted'
                     controlId='formFeatures'
@@ -58,7 +58,7 @@ export default function PageDisplay() {
         case 4:
             return (
                 <CustomInput
-                    percentage={75}
+                    percentage={15}
                     rows={2}
                     placeholder='fashionable, quirky, shows you are a cat person'
                     controlId='formBenefits'
@@ -68,9 +68,9 @@ export default function PageDisplay() {
                 />
             )
         case 5:
-            return (<EnginePage percentage={95} />);
+            return (<EnginePage percentage={5} />);
         case 6:
-            return (<ResponsePage percentage={100} />);
+            return (<ResponsePage />);
         default:
             break;
     }

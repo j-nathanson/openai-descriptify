@@ -2,6 +2,7 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   index: 0,
+  percent: 10,
   titles: [
     'What is your product?',
     'What is your product\'s name?',
@@ -24,10 +25,16 @@ export const pageInfoSlice = createSlice({
     },
     resetIndex: (state) => {
       state.index = 0;
-    }
+    },
+    incrementPercent: (state, action) => {
+      state.percent += action.payload;
+    },
+    decrementPercent: (state,action) => {
+      state.percent -= action.payload;
+    },
   },
 })
 
-export const { incrementIndex, decrementIndex, resetIndex } = pageInfoSlice.actions;
+export const { incrementIndex, decrementIndex, resetIndex, incrementPercent, decrementPercent } = pageInfoSlice.actions;
 
 export default pageInfoSlice.reducer;

@@ -2,9 +2,8 @@ import React from 'react';
 import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrementIndex, incrementIndex } from '../../redux/pageInfoSlice';
+import { decrementIndex, decrementPercent, incrementIndex, incrementPercent } from '../../redux/pageInfoSlice';
 
 export default function CustomInput({ percentage, rows, placeholder, controlId, storeKey, actionCB, instruction }) {
 
@@ -18,9 +17,18 @@ export default function CustomInput({ percentage, rows, placeholder, controlId, 
             dispatch(incrementIndex());
         }
     }
+
+    const decrementValues = () => {
+        dispatch(decrementIndex())
+        dispatch(decrementPercent( percentage))
+    }
+    const incrementValues = () => {
+        dispatch(incrementIndex())
+        dispatch(incrementPercent( percentage))
+    }
     return (
         <div>
-            <ProgressBar animated now={percentage} />
+            {/* <ProgressBar animated now={percentage} /> */}
             <Form.Group className="my-3" controlId={controlId}>
                 <InputGroup>
                     <Form.Control
@@ -35,14 +43,14 @@ export default function CustomInput({ percentage, rows, placeholder, controlId, 
                     <Button
                         variant="outline-primary"
                         size='sm'
-                        onClick={() => dispatch(decrementIndex())}
+                        onClick={() => decrementValues()}
                         disabled={index === 0}
                     >Prev
                     </Button>
                     <Button
                         variant="outline-primary"
                         size='sm'
-                        onClick={() => dispatch(incrementIndex())}
+                        onClick={() => incrementValues()}
                     >Next</Button>
                 </InputGroup>
                 <Form.Text className="text-muted">

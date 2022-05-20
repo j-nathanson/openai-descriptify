@@ -1,6 +1,5 @@
 import React from 'react';
 import Form from 'react-bootstrap/Form';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEngine } from '../../redux/formDataSlice';
 
@@ -8,9 +7,10 @@ export default function EnginePage({ percentage }) {
     const dispatch = useDispatch();
     const engine = useSelector(state => state.formData.engine);
 
+    // on submit
+    // dispatch(incrementPercent( percentage))
     return (
         <div>
-            <ProgressBar animated now={percentage} />
             <Form.Select
                 size="lg"
                 value={engine}
