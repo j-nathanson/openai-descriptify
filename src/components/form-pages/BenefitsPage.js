@@ -15,6 +15,7 @@ export default function BenefitsPage() {
 
     return (
         <Form.Group className="mb-3" controlId="formIdealUsers">
+            <Form.Label visuallyHidden>Who are your ideal users?</Form.Label>
             <Form.Control
                 as="textarea"
                 rows={3}

@@ -16,6 +16,7 @@ export default function FeaturesPage() {
 
     return (
         <Form.Group className="mb-3" controlId="formIdealUsers">
+            <Form.Label visuallyHidden>What are the features of this product?</Form.Label>
             <Form.Control
                 as="textarea"
                 rows={3}

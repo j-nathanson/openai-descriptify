@@ -15,6 +15,7 @@ export default function BasicDescriptionPage() {
     }
     return (
         <Form.Group className="mb-3" controlId="formBasicDescription">
+            <Form.Label visuallyHidden>What is your product?</Form.Label>
             <Form.Control
                 type="text"
                 placeholder="A cat necklace"

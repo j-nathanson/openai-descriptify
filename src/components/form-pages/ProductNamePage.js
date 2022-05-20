@@ -16,6 +16,7 @@ export default function ProductNamePage() {
 
     return (
         <Form.Group className="mb-3" controlId="formProductName">
+            <Form.Label visuallyHidden>What is your product's name?</Form.Label>
             <Form.Control
                 type="text"
                 placeholder="Sweet Dreams Kitty Pendant"
