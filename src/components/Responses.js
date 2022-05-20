@@ -7,11 +7,8 @@ export default function Responses() {
     const responses = useSelector(state => state.responses.totalResponses);
 
     const reversedResponses = [...responses].reverse();
-
-    navigator.clipboard.writeText('lklk')
-    console.log(navigator.clipboard)
     return (
-        <div>
+        <div className='container'>
             {reversedResponses.map((item, index) => <ResponseCard key={index} item={item} />)}
         </div>
     )

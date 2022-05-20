@@ -31,9 +31,7 @@ export const formDataSlice = createSlice({
         setEngine: (state, action) => {
             state.engine = action.payload;
         },
-        resetValues: (state) => {
-            state = initialState;
-        }
+        resetValues: () => initialState
     },
 })
 

@@ -1,26 +1,23 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment, reset } from '../redux/pageInfoSlice';
-import BasicDescriptionPage from './form-pages/BasicDescriptionPage';
-import BenefitsPage from './form-pages/BenefitsPage';
+import { decrement, increment, resetIndex } from '../redux/pageInfoSlice';
+import { pushNewResponse, setIsLoading } from '../redux/responseSlice';
+import { setBasicDescription, setBenefits, setFeatures, setIdealUsers, setProductName, resetValues } from '../redux/formDataSlice';
 import EnginePage from './form-pages/EnginePage';
-import FeaturesPage from './form-pages/FeaturesPage';
-import IdealUsersPage from './form-pages/IdealUsersPage';
-import ProductNamePage from './form-pages/ProductNamePage';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
 import ResponsePage from './form-pages/ResponsePage';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import postData from '../api/generate';
-import { pushNewResponse, setIsLoading } from '../redux/responseSlice';
+import CustomInput from './form-pages/CustomInput';
 
 export default function Form() {
 
     const index = useSelector((state) => state.pageInfo.index);
+    const progressPercent = useSelector(state => state.pageInfo.progressPercent);
     const titles = useSelector((state) => state.pageInfo.titles);
     const formData = useSelector(state => state.formData);
     const isLoading = useSelector(state => state.responses.isLoading)
-    let progressPercent = 0;
 
     const dispatch = useDispatch();
 
@@ -32,41 +29,90 @@ export default function Form() {
 
         dispatch(setIsLoading(false));
 
-        dispatch(pushNewResponse({
-            response,
-            prompt: formData
-        }))
+        dispatch(pushNewResponse({ response, prompt: formData }));
+    }
 
-
+    const resetForm = () => {
+        dispatch(resetIndex());
+        dispatch(resetValues());
     }
 
     const PageDisplay = () => {
         switch (index) {
             case 0:
-                progressPercent = 10;
-                return <BasicDescriptionPage />;
+                return (
+                    <CustomInput
+                        percentage={10}
+                        hiddenLabel={titles[index]}
+                        rows={1}
+                        placeholder='A cat necklace'
+                        controlId='formBasicDescription'
+                        storeKey='basicDescription'
+                        actionCB={setBasicDescription}
+                        instruction='Give a basic description of what your product is.'
+                    />)
             case 1:
-                progressPercent = 20;
-                return <ProductNamePage />;
+                return (
+                    <CustomInput
+                        percentage={30}
+                        hiddenLabel={titles[index]}
+                        rows={1}
+                        placeholder='Sweet Dreams Kitty Pendant'
+                        controlId='formProductName'
+                        storeKey='productName'
+                        actionCB={setProductName}
+                        instruction='Give your product a unique name'
+                    />
+                )
             case 2:
-                progressPercent = 40;
-                return <IdealUsersPage />;
+                return (
+                    <CustomInput
+                        percentage={40}
+                        hiddenLabel={titles[index]}
+                        rows={2}
+                        placeholder='Cat lovers, children, fine crafts enthusiasts.'
+                        controlId='formIdealUsers'
+                        storeKey='idealUsers'
+                        actionCB={setIdealUsers}
+                        instruction='Who is your target audience for this product?'
+                    />
+                )
             case 3:
-                progressPercent = 60;
-                return <FeaturesPage />;
+                // return <FeaturesPage />;
+                return (
+                    <CustomInput
+                        percentage={60}
+                        hiddenLabel={titles[index]}
+                        rows={2}
+                        placeholder='Sterling silver, 11-inch chain, handcrafted'
+                        controlId='formFeatures'
+                        storeKey='features'
+                        actionCB={setFeatures}
+                        instruction='List some of the unique features and technical specifications of this product.'
+                    />
+                )
             case 4:
-                progressPercent = 80;
-                return <BenefitsPage />;
+                return (
+                    <CustomInput
+                        percentage={75}
+                        hiddenLabel={titles[index]}
+                        rows={2}
+                        placeholder='fashionable, quirky, shows you are a cat person'
+                        controlId='formBenefits'
+                        storeKey='benefits'
+                        actionCB={setBenefits}
+                        instruction='List some of ways users will benefit from using your product.'
+                    />
+                )
             case 5:
-                progressPercent = 95;
-                return <EnginePage />;
+                return <EnginePage percentage={95} />;
             case 6:
-                progressPercent = 100;
-                return <ResponsePage />;
+                return <ResponsePage percentage={100} />;
             default:
                 break;
         }
     };
+
 
     const handleClick = (e) => {
         if (index <= 5) {
@@ -77,10 +123,11 @@ export default function Form() {
         }
     }
     return (
-        <div>
+        <div className='container'>
             <h2>{titles[index]}</h2>
-            {PageDisplay()}
             <ProgressBar animated now={progressPercent} />
+            {PageDisplay()}
+
             <Button
                 aria-label="Previous Page"
                 onClick={() => dispatch(decrement())}
@@ -96,7 +143,7 @@ export default function Form() {
                 index === 6 && (
                     <Button
                         aria-label="Next Page"
-                        onClick={() => dispatch(reset())}>
+                        onClick={resetForm}>
                         Start Over
                     </Button>
                 )
@@ -106,7 +153,7 @@ export default function Form() {
                     animation="border"
                     variant='primary'
                     role="status">
-                    <span className="visually-hidden">Loading...</span>
+                    <span className="visually-hidden">Loading Spinner</span>
                 </Spinner>
             )}
         </div>
