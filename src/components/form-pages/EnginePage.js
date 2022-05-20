@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import Form from 'react-bootstrap/Form';
 import Dropdown from 'react-bootstrap/Dropdown';
 import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,17 +19,14 @@ export default function EnginePage({ percentage }) {
     }
 
     return (
-        <DropdownButton
-            id="dropdown-engine-button"
-            title={title}
-            onSelect={handleSelect}
-            defaultValue={engine}
-            aria-label="Select GPT-3 Engine"
-        >
-            <Dropdown.Item eventKey="text-curie-001">text-curie-001</Dropdown.Item>
-            <Dropdown.Item eventKey="text-davinci-002">text-davinci-002</Dropdown.Item>
-            <Dropdown.Item eventKey="text-babbage-001">text-babbage-001</Dropdown.Item>
-            <Dropdown.Item eventKey="text-ada-001">text-ada-001</Dropdown.Item>
-        </DropdownButton>
+        <Form.Select
+            size="lg"
+            onChange={(e) => dispatch(setEngine(e.target.value))}
+            aria-label="Select which of GTP's engine to use">
+            <option value="text-curie-001">text-curie-001</option>
+            <option value="text-davinci-002">text-davinci-002</option>
+            <option value="text-babbage-001">text-babbage-001</option>
+            <option value="text-ada-001">text-ada-001</option>
+        </Form.Select>
     )
 }
