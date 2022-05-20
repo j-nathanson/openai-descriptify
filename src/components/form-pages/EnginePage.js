@@ -1,7 +1,5 @@
-import React, { useState } from 'react';
+import React from 'react';
 import Form from 'react-bootstrap/Form';
-import Dropdown from 'react-bootstrap/Dropdown';
-import DropdownButton from 'react-bootstrap/DropdownButton';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEngine } from '../../redux/formDataSlice';
 import { setProgressPercent } from '../../redux/pageInfoSlice';
@@ -9,18 +7,13 @@ import { setProgressPercent } from '../../redux/pageInfoSlice';
 export default function EnginePage({ percentage }) {
     const dispatch = useDispatch();
     const engine = useSelector(state => state.formData.engine);
-    const [title, setTitle] = useState('text-curie-001');
 
     dispatch(setProgressPercent(percentage));
-
-    const handleSelect = (value) => {
-        setTitle(value)
-        dispatch(setEngine(value))
-    }
 
     return (
         <Form.Select
             size="lg"
+            value={engine}
             onChange={(e) => dispatch(setEngine(e.target.value))}
             aria-label="Select which of GTP's engine to use">
             <option value="text-curie-001">text-curie-001</option>
