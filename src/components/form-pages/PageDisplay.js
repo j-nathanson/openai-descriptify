@@ -1,10 +1,12 @@
 import React from 'react'
+import { useSelector } from 'react-redux'
 import { setBasicDescription, setBenefits, setFeatures, setIdealUsers, setProductName } from '../../redux/formDataSlice'
 import CustomInput from './CustomInput'
 import EnginePage from './EnginePage'
 import ResponsePage from './ResponsePage'
 
-export default function PageDisplay({ index }) {
+export default function PageDisplay() {
+    const index = useSelector((state) => state.pageInfo.index);
     switch (index) {
         case 0:
             return (
@@ -66,9 +68,9 @@ export default function PageDisplay({ index }) {
                 />
             )
         case 5:
-            return <EnginePage percentage={95} />;
+            return (<EnginePage percentage={95} />);
         case 6:
-            return <ResponsePage percentage={100} />;
+            return (<ResponsePage percentage={100} />);
         default:
             break;
     }

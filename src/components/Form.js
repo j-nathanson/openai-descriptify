@@ -1,18 +1,16 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import { decrement, increment, resetIndex } from '../redux/pageInfoSlice';
+import { decrementIndex, incrementIndex, resetIndex } from '../redux/pageInfoSlice';
 import { pushNewResponse, setIsLoading } from '../redux/responseSlice';
 import { resetValues } from '../redux/formDataSlice';
 import Button from 'react-bootstrap/Button';
 import Spinner from 'react-bootstrap/Spinner';
-import ProgressBar from 'react-bootstrap/ProgressBar';
 import postData from '../api/generate';
 import PageDisplay from './form-pages/PageDisplay';
 
 export default function Form() {
 
     const index = useSelector((state) => state.pageInfo.index);
-    const progressPercent = useSelector(state => state.pageInfo.progressPercent);
     const titles = useSelector((state) => state.pageInfo.titles);
     const formData = useSelector(state => state.formData);
     const isLoading = useSelector(state => state.responses.isLoading)
@@ -40,7 +38,7 @@ export default function Form() {
 
     const handleClick = (e) => {
         if (index <= 5) {
-            dispatch(increment());
+            dispatch(incrementIndex());
         }
         if (index >= 5) {
             handleSubmit(e);
@@ -49,12 +47,11 @@ export default function Form() {
     return (
         <div className='container'>
             <h2>{titles[index]}</h2>
-            <ProgressBar animated now={progressPercent} />
-            <PageDisplay index={index} />
+            <PageDisplay />
 
             <Button
                 aria-label="Previous Page"
-                onClick={() => dispatch(decrement())}
+                onClick={() => dispatch(decrementIndex())}
                 disabled={index === 0}
             >Prev
             </Button>

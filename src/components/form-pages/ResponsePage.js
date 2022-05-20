@@ -1,11 +1,10 @@
 import React from 'react'
-import { useDispatch } from 'react-redux';
-import { setProgressPercent } from '../../redux/pageInfoSlice';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 
 export default function ResponsePage({ percentage }) {
-    const dispatch = useDispatch()
-    dispatch(setProgressPercent(percentage));
     return (
-        <div>ResponsePage</div>
+        <div>
+            <ProgressBar animated now={percentage} />
+        </div>
     )
 }
