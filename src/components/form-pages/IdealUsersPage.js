@@ -2,11 +2,17 @@ import React from 'react'
 import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { setIdealUsers } from '../../redux/formDataSlice';
+import { increment } from '../../redux/pageInfoSlice';
 
 export default function IdealUserPage() {
     const dispatch = useDispatch();
     const idealUsers = useSelector(state => state.formData.idealUsers);
 
+    const handleKeyDown = (event) => {
+        if (event.key === 'Enter') {
+            dispatch(increment());
+        }
+    }
     return (
         <Form.Group className="mb-3" controlId="formIdealUsers">
             <Form.Control
@@ -15,6 +21,7 @@ export default function IdealUserPage() {
                 placeholder="Cat lovers, children, fine crafts enthusiasts."
                 value={idealUsers}
                 onChange={(e) => dispatch(setIdealUsers(e.target.value))}
+                onKeyDown={handleKeyDown}
 
             />
             <Form.Text className="text-muted">
