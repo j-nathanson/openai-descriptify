@@ -3,9 +3,11 @@ import Form from 'react-bootstrap/Form';
 import { useDispatch, useSelector } from 'react-redux';
 import { increment, setProgressPercent } from '../../redux/pageInfoSlice';
 
-export default function CustomInput({ percentage, hiddenLabel, rows, placeholder, controlId, storeKey, actionCB, instruction }) {
+export default function CustomInput({ percentage, rows, placeholder, controlId, storeKey, actionCB, instruction }) {
 
     const dispatch = useDispatch();
+    const titles = useSelector((state) => state.pageInfo.titles);
+    const index = useSelector((state) => state.pageInfo.index);
     const value = useSelector(state => state.formData[storeKey]);
 
     dispatch(setProgressPercent(percentage));
@@ -18,7 +20,7 @@ export default function CustomInput({ percentage, hiddenLabel, rows, placeholder
     }
     return (
         <Form.Group className="my-3" controlId={controlId}>
-            <Form.Label visuallyHidden>{hiddenLabel}</Form.Label>
+            <Form.Label visuallyHidden>{titles[index]}</Form.Label>
             <Form.Control
                 type='text'
                 rows={rows}
