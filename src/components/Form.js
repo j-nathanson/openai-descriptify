@@ -9,6 +9,7 @@ import IdealUsersPage from './form-pages/IdealUsersPage';
 import ProductNamePage from './form-pages/ProductNamePage';
 import Button from 'react-bootstrap/Button';
 import ResponsePage from './form-pages/ResponsePage';
+import ProgressBar from 'react-bootstrap/ProgressBar';
 import postData from '../api/generate';
 import { pushNewResponse } from '../redux/responseSlice';
 
@@ -17,34 +18,42 @@ export default function Form() {
     const index = useSelector((state) => state.pageInfo.index);
     const titles = useSelector((state) => state.pageInfo.titles);
     const formData = useSelector(state => state.formData);
+    let progressPercent = 0;
 
     const dispatch = useDispatch();
 
     async function handleSubmit(event) {
         event.preventDefault();
-        const response= await postData(formData);
+        const response = await postData(formData);
 
         dispatch(pushNewResponse({
             response,
-            prompt:formData
+            prompt: formData
         }))
     }
 
     const PageDisplay = () => {
         switch (index) {
             case 0:
+                progressPercent = 10;
                 return <BasicDescriptionPage />;
             case 1:
+                progressPercent = 20;
                 return <ProductNamePage />;
             case 2:
+                progressPercent = 40;
                 return <IdealUsersPage />;
             case 3:
+                progressPercent = 60;
                 return <FeaturesPage />;
             case 4:
+                progressPercent = 80;
                 return <BenefitsPage />;
             case 5:
+                progressPercent = 95;
                 return <EnginePage />;
             case 6:
+                progressPercent = 100;
                 return <ResponsePage />;
             default:
                 break;
@@ -63,6 +72,7 @@ export default function Form() {
         <div>
             <h2>{titles[index]}</h2>
             {PageDisplay()}
+            <ProgressBar animated now={progressPercent} />
             <Button
                 aria-label="Previous Page"
                 onClick={() => dispatch(decrement())}
