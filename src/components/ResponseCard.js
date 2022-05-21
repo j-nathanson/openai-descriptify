@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Col, Row } from 'react-bootstrap';
 import Button from 'react-bootstrap/Button';
 
 export default function ResponseCard({ item }) {
@@ -18,22 +19,23 @@ export default function ResponseCard({ item }) {
         }, 5000)
     }
     return (
-        <div className="container border">
-            <div className="row">
-                <div className="col-2">Prompt:</div>
+        <div className="container border p-2 ">
+            <Row className='mb-2'>
+                <Col xs={12} sm={3}><h5>Prompt</h5></Col>
                 <div className="col prompt">
-                    <p>Write a product description for an item: </p>
-                    <p>Basic Description: {basicDescription}</p>
-                    <p>Product Name: {productName}</p>
-                    <p>Ideal Users: {idealUsers}</p>
-                    <p>Features: {features}</p>
-                    <p>Benefits: {benefits}</p>
-                    <p>Engine: {engine}</p>
+                    <p className='mb-1'>Write a product description</p>
+
+                    <p><strong>Basic Description: </strong>{basicDescription}</p>
+                    <p><strong>Product Name: </strong>{productName}</p>
+                    <p><strong>Ideal Users: </strong>{idealUsers}</p>
+                    <p><strong>Features: </strong>{features}</p>
+                    <p><strong>Benefits: </strong>{benefits}</p>
+                    <p><strong>Engine: </strong>{engine}</p>
                 </div>
-            </div>
+            </Row>
 
             <div className='row'>
-                <div className="col-2">Response:</div>
+                <Col xs={12} sm={3}><h5>Response</h5></Col>
                 <div className="col"><p>{item.response}</p></div>
             </div>
 
@@ -42,7 +44,7 @@ export default function ResponseCard({ item }) {
                     aria-label='Copy response to clipboard'
                     variant={isCopied ? 'success' : 'primary'}
                     onClick={copy}>
-                    {isCopied ? 'Successfully Copied!' : ' Copy the response to your clipboard!'}
+                    {isCopied ? 'Successfully Copied!' : 'Copy response to  clipboard'}
                 </Button>
 
             </div>

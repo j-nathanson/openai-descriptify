@@ -21,7 +21,7 @@ export default function CustomInput({ placeholder, controlId, storeKey, actionCB
 
     return (
         <>
-            <Form.Group className="mb-5" controlId={controlId}>
+            <Form.Group className="mb-2" controlId={controlId}>
                 <InputGroup>
 
                     <Form.Control

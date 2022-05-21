@@ -1,0 +1,11 @@
+@include media-breakpoint-up(lg) {
+    h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@include media-breakpoint-up(xl) {
+    h1 {
+        font-size: 4rem;
+    }
+}

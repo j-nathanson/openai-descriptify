@@ -26,7 +26,7 @@ export default function EnginePage() {
     }
 
     return (
-        <InputGroup className='mb-5'>
+        <InputGroup className='mb-2'>
             <Form.Select
                 onChange={(e) => dispatch(setEngine(e.target.value))}
                 aria-label="Select which of GTP's engine to use"
