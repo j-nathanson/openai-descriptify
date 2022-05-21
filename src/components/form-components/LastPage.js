@@ -6,7 +6,7 @@ import { resetForm } from '../../redux/formDataSlice';
 import { pushNewResponse, setIsLoading } from '../../redux/responseSlice';
 import { postData } from '../../api/generate';
 
-export default function ResponsePage() {
+export default function LastPage() {
     const formData = useSelector(state => state.formData);
 
     const handleSubmit = async () => {

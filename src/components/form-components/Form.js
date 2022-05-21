@@ -1,6 +1,6 @@
 import React from 'react'
 import { useSelector } from 'react-redux';
-import PageDisplay from './form-pages/PageDisplay';
+import PageDisplay from './PageDisplay';
 import ProgressBar from 'react-bootstrap/ProgressBar';
 import { Col, Row } from 'react-bootstrap';
 

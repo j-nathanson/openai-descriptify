@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux'
 import { setBasicDescription, setBenefits, setFeatures, setIdealUsers, setProductName } from '../../redux/formDataSlice'
 import CustomInput from './CustomInput'
 import EnginePage from './EnginePage'
-import ResponsePage from './ResponsePage'
+import LastPage from './LastPage'
 
 export default function PageDisplay() {
     const index = useSelector((state) => state.pageInfo.index);
@@ -60,7 +60,7 @@ export default function PageDisplay() {
         case 5:
             return (<EnginePage />);
         case 6:
-            return (<ResponsePage />);
+            return (<LastPage />);
         default:
             break;
     }
