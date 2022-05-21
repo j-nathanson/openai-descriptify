@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  index: 0,
+  index: 6,
   percent: 0,
   step: (100 / 6),
   titles: [
@@ -18,24 +18,21 @@ export const pageInfoSlice = createSlice({
   name: 'pageIndex',
   initialState,
   reducers: {
-    incrementIndex: (state) => {
+    nextPage: (state) => {
       state.index += 1;
+      state.percent += state.step;
     },
-    decrementIndex: (state) => {
+    previousPage: (state) => {
       state.index -= 1;
+      state.percent -= state.step;
     },
-    resetIndex: (state) => {
+    resetIndexAndPercent: (state) => {
       state.index = 0;
-    },
-    incrementPercent: (state, action) => {
-      state.percent += action.payload;
-    },
-    decrementPercent: (state, action) => {
-      state.percent -= action.payload;
-    },
+      state.percent = 0;
+    }
   },
 })
 
-export const { incrementIndex, decrementIndex, resetIndex, incrementPercent, decrementPercent } = pageInfoSlice.actions;
+export const { nextPage, previousPage, resetIndexAndPercent } = pageInfoSlice.actions;
 
 export default pageInfoSlice.reducer;

@@ -4,35 +4,25 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEngine } from '../../redux/formDataSlice';
-import { decrementIndex, decrementPercent, incrementIndex, incrementPercent } from '../../redux/pageInfoSlice';
+import { nextPage, previousPage } from '../../redux/pageInfoSlice';
 import { pushNewResponse, setIsLoading } from '../../redux/responseSlice';
 import { postData } from '../../api/generate';
 
 export default function EnginePage() {
     const dispatch = useDispatch();
     const engine = useSelector(state => state.formData.engine);
-    const step = useSelector((state) => state.pageInfo.step);
     const formData = useSelector(state => state.formData);
 
-    async function handleSubmit() {
-       
-        dispatch(incrementPercent(step))
+    const handleSubmit = async () => {
         dispatch(setIsLoading(true));
-
-
         try {
             const response = await postData(formData);
             dispatch(pushNewResponse({ response, prompt: formData }));
-            dispatch(incrementIndex());
+            dispatch(nextPage());
         } catch (error) {
             console.log(error)
         }
         dispatch(setIsLoading(false));
-    }
-
-    const decrementValues = () => {
-        dispatch(decrementIndex());
-        dispatch(decrementPercent(step));
     }
 
     return (
@@ -50,7 +40,7 @@ export default function EnginePage() {
             <Button
                 variant="outline-primary"
                 size='sm'
-                onClick={() => decrementValues()}
+                onClick={() => dispatch(previousPage())}
             >
                 Prev</Button>
             <Button

@@ -31,10 +31,10 @@ export const formDataSlice = createSlice({
         setEngine: (state, action) => {
             state.engine = action.payload;
         },
-        resetValues: () => initialState
+        resetForm: () => initialState
     },
 })
 
-export const { setBasicDescription, setProductName, setIdealUsers, setBenefits, setFeatures, setEngine, resetValues } = formDataSlice.actions;
+export const { setBasicDescription, setProductName, setIdealUsers, setBenefits, setFeatures, setEngine, resetForm } = formDataSlice.actions;
 
 export default formDataSlice.reducer;

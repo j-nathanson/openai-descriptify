@@ -3,31 +3,22 @@ import Form from 'react-bootstrap/Form';
 import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
-import { decrementIndex, decrementPercent, incrementIndex, incrementPercent } from '../../redux/pageInfoSlice';
+import { nextPage, previousPage } from '../../redux/pageInfoSlice';
 
 export default function CustomInput({ placeholder, controlId, storeKey, actionCB, instruction }) {
 
     const dispatch = useDispatch();
-    // destructure
+
     const titles = useSelector((state) => state.pageInfo.titles);
-    const step = useSelector((state) => state.pageInfo.step);
     const index = useSelector((state) => state.pageInfo.index);
     const value = useSelector(state => state.formData[storeKey]);
 
     const handleKeyDown = (event) => {
         if (event.key === 'Enter') {
-            dispatch(incrementIndex());
+            dispatch(nextPage());
         }
     }
 
-    const decrementValues = () => {
-        dispatch(decrementIndex())
-        dispatch(decrementPercent(step))
-    }
-    const incrementValues = () => {
-        dispatch(incrementIndex())
-        dispatch(incrementPercent(step))
-    }
     return (
         <>
             <Form.Group className="mb-5" controlId={controlId}>
@@ -43,7 +34,7 @@ export default function CustomInput({ placeholder, controlId, storeKey, actionCB
                     <Button
                         variant="outline-primary"
                         size='sm'
-                        onClick={() => decrementValues()}
+                        onClick={() => dispatch(previousPage())}
                         disabled={index === 0}
                         aria-label="Previous Page"
                     >
@@ -52,7 +43,7 @@ export default function CustomInput({ placeholder, controlId, storeKey, actionCB
                     <Button
                         variant="outline-primary"
                         size='sm'
-                        onClick={() => incrementValues()}
+                        onClick={() => dispatch(nextPage())}
                         aria-label="Next Page"
                     >
                         Next
