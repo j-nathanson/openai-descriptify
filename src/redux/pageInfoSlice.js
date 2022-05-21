@@ -3,6 +3,7 @@ import { createSlice } from '@reduxjs/toolkit'
 const initialState = {
   index: 0,
   percent: 0,
+  step: (100 / 6),
   titles: [
     'What is your product?',
     'What is your product\'s name?',

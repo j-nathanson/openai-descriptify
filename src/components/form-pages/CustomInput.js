@@ -5,10 +5,12 @@ import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { decrementIndex, decrementPercent, incrementIndex, incrementPercent } from '../../redux/pageInfoSlice';
 
-export default function CustomInput({ percentage, rows, placeholder, controlId, storeKey, actionCB, instruction }) {
+export default function CustomInput({ placeholder, controlId, storeKey, actionCB, instruction }) {
 
     const dispatch = useDispatch();
+    // destructure
     const titles = useSelector((state) => state.pageInfo.titles);
+    const step = useSelector((state) => state.pageInfo.step);
     const index = useSelector((state) => state.pageInfo.index);
     const value = useSelector(state => state.formData[storeKey]);
 
@@ -20,11 +22,11 @@ export default function CustomInput({ percentage, rows, placeholder, controlId, 
 
     const decrementValues = () => {
         dispatch(decrementIndex())
-        dispatch(decrementPercent(percentage))
+        dispatch(decrementPercent(step))
     }
     const incrementValues = () => {
         dispatch(incrementIndex())
-        dispatch(incrementPercent(percentage))
+        dispatch(incrementPercent(step))
     }
     return (
         <>
@@ -32,7 +34,6 @@ export default function CustomInput({ percentage, rows, placeholder, controlId, 
                 <InputGroup>
                     <Form.Control
                         type='text'
-                        rows={rows}
                         placeholder={placeholder}
                         value={value}
                         onChange={(e) => dispatch(actionCB(e.target.value))}
