@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  index: 6,
+  index: 0,
   percent: 0,
   step: (100 / 6),
   titles: [
@@ -11,7 +11,7 @@ const initialState = {
     'What are the features of this product?',
     'What are the benefits of using this product?',
     'Choose AI Engine Capability',
-    'Your result']
+    'Check Out Your Result Below!']
 }
 
 export const pageInfoSlice = createSlice({

@@ -23,6 +23,7 @@ export default function CustomInput({ placeholder, controlId, storeKey, actionCB
         <>
             <Form.Group className="mb-5" controlId={controlId}>
                 <InputGroup>
+
                     <Form.Control
                         type='text'
                         placeholder={placeholder}
@@ -32,7 +33,7 @@ export default function CustomInput({ placeholder, controlId, storeKey, actionCB
                         aria-label={titles[index]}
                     />
                     <Button
-                        variant="outline-primary"
+                        variant="outline-light"
                         size='sm'
                         onClick={() => dispatch(previousPage())}
                         disabled={index === 0}
@@ -41,7 +42,7 @@ export default function CustomInput({ placeholder, controlId, storeKey, actionCB
                         Prev
                     </Button>
                     <Button
-                        variant="outline-primary"
+                        variant="outline-light"
                         size='sm'
                         onClick={() => dispatch(nextPage())}
                         aria-label="Next Page"

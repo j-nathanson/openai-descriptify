@@ -38,7 +38,7 @@ export default function EnginePage() {
                 <option value="text-ada-001">"text-ada-001"- Least Capable</option>
             </Form.Select>
             <Button
-                variant="outline-primary"
+                variant="outline-light"
                 size='sm'
                 onClick={() => dispatch(previousPage())}
             >
