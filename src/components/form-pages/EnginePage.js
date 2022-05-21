@@ -4,23 +4,26 @@ import InputGroup from 'react-bootstrap/InputGroup';
 import Button from 'react-bootstrap/Button';
 import { useDispatch, useSelector } from 'react-redux';
 import { setEngine } from '../../redux/formDataSlice';
-import { decrementIndex, decrementPercent, incrementPercent } from '../../redux/pageInfoSlice';
+import { decrementIndex, decrementPercent, incrementIndex, incrementPercent } from '../../redux/pageInfoSlice';
 import { pushNewResponse, setIsLoading } from '../../redux/responseSlice';
 import { postData } from '../../api/generate';
 
-export default function EnginePage({ percentage }) {
+export default function EnginePage() {
     const dispatch = useDispatch();
     const engine = useSelector(state => state.formData.engine);
+    const step = useSelector((state) => state.pageInfo.step);
     const formData = useSelector(state => state.formData);
 
-    async function handleSubmit(event) {
+    async function handleSubmit() {
        
-        dispatch(incrementPercent(percentage))
+        dispatch(incrementPercent(step))
         dispatch(setIsLoading(true));
+
 
         try {
             const response = await postData(formData);
             dispatch(pushNewResponse({ response, prompt: formData }));
+            dispatch(incrementIndex());
         } catch (error) {
             console.log(error)
         }
@@ -29,7 +32,7 @@ export default function EnginePage({ percentage }) {
 
     const decrementValues = () => {
         dispatch(decrementIndex());
-        dispatch(decrementPercent(percentage));
+        dispatch(decrementPercent(step));
     }
 
     return (

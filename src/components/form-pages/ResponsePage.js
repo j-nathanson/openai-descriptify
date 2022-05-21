@@ -9,7 +9,7 @@ export default function ResponsePage({ percentage }) {
     // }
     return (
         <div>
-            <ProgressBar animated now={percentage} />
+            
         </div>
     )
 }
