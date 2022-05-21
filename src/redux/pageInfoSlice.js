@@ -2,14 +2,14 @@ import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
   index: 0,
-  percent: 10,
+  percent: 0,
   titles: [
     'What is your product?',
     'What is your product\'s name?',
     'Who are your ideal users?',
     'What are the features of this product?',
     'What are the benefits of using this product?',
-    'Please choose from one of GPT-3\'s Models',
+    'Choose AI Engine Capability',
     'Your result']
 }
 
@@ -29,7 +29,7 @@ export const pageInfoSlice = createSlice({
     incrementPercent: (state, action) => {
       state.percent += action.payload;
     },
-    decrementPercent: (state,action) => {
+    decrementPercent: (state, action) => {
       state.percent -= action.payload;
     },
   },

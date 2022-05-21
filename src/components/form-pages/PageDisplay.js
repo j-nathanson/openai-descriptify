@@ -6,13 +6,13 @@ import EnginePage from './EnginePage'
 import ResponsePage from './ResponsePage'
 
 export default function PageDisplay() {
+    const step = 100 / 6;
     const index = useSelector((state) => state.pageInfo.index);
     switch (index) {
         case 0:
             return (
                 <CustomInput
-                    percentage={10}
-                    rows={1}
+                    percentage={step}
                     placeholder='A cat necklace'
                     controlId='formBasicDescription'
                     storeKey='basicDescription'
@@ -22,8 +22,7 @@ export default function PageDisplay() {
         case 1:
             return (
                 <CustomInput
-                    percentage={20}
-                    rows={1}
+                    percentage={step}
                     placeholder='Sweet Dreams Kitty Pendant'
                     controlId='formProductName'
                     storeKey='productName'
@@ -34,8 +33,7 @@ export default function PageDisplay() {
         case 2:
             return (
                 <CustomInput
-                    percentage={20}
-                    rows={2}
+                    percentage={step}
                     placeholder='Cat lovers, children, fine crafts enthusiasts.'
                     controlId='formIdealUsers'
                     storeKey='idealUsers'
@@ -46,8 +44,7 @@ export default function PageDisplay() {
         case 3:
             return (
                 <CustomInput
-                    percentage={20}
-                    rows={2}
+                    percentage={step}
                     placeholder='Sterling silver, 11-inch chain, handcrafted'
                     controlId='formFeatures'
                     storeKey='features'
@@ -58,8 +55,7 @@ export default function PageDisplay() {
         case 4:
             return (
                 <CustomInput
-                    percentage={15}
-                    rows={2}
+                    percentage={step}
                     placeholder='fashionable, quirky, shows you are a cat person'
                     controlId='formBenefits'
                     storeKey='benefits'
@@ -68,7 +64,7 @@ export default function PageDisplay() {
                 />
             )
         case 5:
-            return (<EnginePage percentage={5} />);
+            return (<EnginePage percentage={step} />);
         case 6:
             return (<ResponsePage />);
         default:

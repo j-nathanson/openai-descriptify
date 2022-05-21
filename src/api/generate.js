@@ -1,32 +1,7 @@
-import { Configuration, OpenAIApi } from "openai";
+import axios from "axios";
 
-const configuration = new Configuration({
-    apiKey: process.env.REACT_APP_API_KEY,
-});
-const openai = new OpenAIApi(configuration);
-
-export default async function postData(data) {
-    const { engine } = data;
-    const prompt = generatePrompt(data);
-    try {
-        const completion = await openai.createCompletion(`${engine}`, {
-            prompt,
-            temperature: 0.5,
-            max_tokens: 1004,
-            top_p: 1.0,
-            frequency_penalty: 1.0,
-            presence_penalty: 1.0,
-        });
-        return completion.data.choices[0].text
-    } catch (error) {
-        console.log(error);
-        alert("Could not connect to API");
-    }
-}
-
-
-function generatePrompt(data) {
-    const { productName, basicDescription, idealUsers, benefits, features, } = data;
+const generatePrompt = (formData) => {
+    const { productName, basicDescription, idealUsers, benefits, features } = formData;
 
     const prompt =
         `Write a product description for an item: 
@@ -37,4 +12,27 @@ function generatePrompt(data) {
         Benefits to the user: ${benefits}
         Features: ${features}`
     return prompt;
+}
+
+export const postData = async (formData) => {
+    const { engine } = formData;
+    const prompt = generatePrompt(formData);
+
+    const requestBody = {
+        prompt,
+        temperature: 0.5,
+        max_tokens: 1004,
+        top_p: 1.0,
+        frequency_penalty: 1.0,
+        presence_penalty: 1.0,
+    }
+
+    const config = { headers: { Authorization: `Bearer ${process.env.REACT_APP_API_KEY}` } }
+
+    try {
+        const res = await axios.post(`https://api.openai.com/v1/engines/${engine}/completions`, requestBody, config);
+        return res.data.choices[0].text;
+    } catch (error) {
+        console.log(error)
+    }
 }

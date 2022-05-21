@@ -20,16 +20,15 @@ export default function CustomInput({ percentage, rows, placeholder, controlId, 
 
     const decrementValues = () => {
         dispatch(decrementIndex())
-        dispatch(decrementPercent( percentage))
+        dispatch(decrementPercent(percentage))
     }
     const incrementValues = () => {
         dispatch(incrementIndex())
-        dispatch(incrementPercent( percentage))
+        dispatch(incrementPercent(percentage))
     }
     return (
-        <div>
-            {/* <ProgressBar animated now={percentage} /> */}
-            <Form.Group className="my-3" controlId={controlId}>
+        <>
+            <Form.Group className="mb-5" controlId={controlId}>
                 <InputGroup>
                     <Form.Control
                         type='text'
@@ -45,18 +44,23 @@ export default function CustomInput({ percentage, rows, placeholder, controlId, 
                         size='sm'
                         onClick={() => decrementValues()}
                         disabled={index === 0}
-                    >Prev
+                        aria-label="Previous Page"
+                    >
+                        Prev
                     </Button>
                     <Button
                         variant="outline-primary"
                         size='sm'
                         onClick={() => incrementValues()}
-                    >Next</Button>
+                        aria-label="Next Page"
+                    >
+                        Next
+                    </Button>
                 </InputGroup>
                 <Form.Text className="text-muted">
                     {instruction}
                 </Form.Text>
             </Form.Group >
-        </div>
+        </>
     )
 }
