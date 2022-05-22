@@ -8,8 +8,8 @@ export default function Responses() {
 
     const reversedResponses = [...responses].reverse();
     return (
-        <div className='container'>
+        <section className='container'>
             {reversedResponses.map((item, index) => <ResponseCard key={index} item={item} />)}
-        </div>
+        </section>
     )
 }
