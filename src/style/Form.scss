@@ -1,7 +1,15 @@
 h3 {
-    min-height: 55px;
+    min-height: 56px;
 }
 
 .form-group {
     min-height: 100px;
+}
+
+@media (min-width: 400px) {
+    .form-group {
+        .row {
+            height: 40px;
+        }
+    }
 }

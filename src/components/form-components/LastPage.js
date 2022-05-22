@@ -5,7 +5,7 @@ import { previousPage, resetIndexAndPercent } from '../../redux/pageInfoSlice';
 import { resetForm } from '../../redux/formDataSlice';
 import { pushNewResponse, setIsLoading } from '../../redux/responseSlice';
 import { postData } from '../../api/generate';
-import { InputGroup } from 'react-bootstrap';
+import { ButtonGroup } from 'react-bootstrap';
 
 export default function LastPage() {
     const formData = useSelector(state => state.formData);
@@ -28,7 +28,7 @@ export default function LastPage() {
     }
     return (
         <div className='mb-2 container d-flex justify-content-center align-items-start form-group'>
-            <InputGroup className='row'>
+            <ButtonGroup className='row w-100'>
                 <Button
                     variant="outline-light"
                     className='col-4'
@@ -53,7 +53,7 @@ export default function LastPage() {
                 >
                     Start Over
                 </Button>
-            </InputGroup >
+            </ButtonGroup >
         </div>
 
     )
