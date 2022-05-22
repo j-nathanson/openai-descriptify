@@ -36,7 +36,7 @@ export default function ResponseCard({ item }) {
 
             <div className='row'>
                 <Col xs={12} sm={3}><h5>Response</h5></Col>
-                <div className="col"><p>{item.response}</p></div>
+                <div className="col"><p className='response-text'>{item.response}</p></div>
             </div>
 
             <div className="row">
