@@ -7,6 +7,7 @@ import LastPage from './LastPage'
 
 export default function PageDisplay() {
     const index = useSelector((state) => state.pageInfo.index);
+    
     switch (index) {
         case 0:
             return (

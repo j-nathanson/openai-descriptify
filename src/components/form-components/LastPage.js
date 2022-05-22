@@ -1,11 +1,11 @@
 import React from 'react'
 import { useDispatch, useSelector } from 'react-redux';
-import Button from 'react-bootstrap/Button';
 import { previousPage, resetIndexAndPercent } from '../../redux/pageInfoSlice';
 import { resetForm } from '../../redux/formDataSlice';
 import { pushNewResponse, setIsLoading } from '../../redux/responseSlice';
 import { postData } from '../../api/generate';
-import { ButtonGroup } from 'react-bootstrap';
+import Button from 'react-bootstrap/Button';
+import ButtonGroup from 'react-bootstrap/ButtonGroup';
 
 export default function LastPage() {
     const formData = useSelector(state => state.formData);
@@ -27,10 +27,10 @@ export default function LastPage() {
         dispatch(resetForm());
     }
     return (
-        <div className='mb-2 container d-flex justify-content-center align-items-start form-group'>
+        <div className='container form-group mb-2 d-flex justify-content-center align-items-start'>
             <ButtonGroup className='row w-100'>
                 <Button
-                    variant="outline-light"
+                    variant='outline-light'
                     className='col-4'
                     size='sm'
                     onClick={() => dispatch(previousPage())}
@@ -38,7 +38,7 @@ export default function LastPage() {
                     Prev
                 </Button>
                 <Button
-                    variant="outline-success"
+                    variant='outline-success'
                     className='col-4'
                     size='sm'
                     onClick={handleSubmit}
@@ -46,7 +46,7 @@ export default function LastPage() {
                     Submit Again
                 </Button>
                 <Button
-                    variant="outline-warning"
+                    variant='outline-warning'
                     size='sm'
                     onClick={startOver}
                     className='col-4'

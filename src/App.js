@@ -1,6 +1,6 @@
 import Form from './components/form-components/Form.js';
 import Header from './components/Header.js';
-import LoadingComponent from './components/LoadinComponent.js';
+import LoadingComponent from './components/LoadingComponent.js';
 import Responses from './components/response-components/Responses.js';
 
 function App() {
@@ -11,8 +11,6 @@ function App() {
       <LoadingComponent />
       <Responses />
     </div>
-
-
   );
 }
 

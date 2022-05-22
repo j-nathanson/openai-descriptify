@@ -20,7 +20,7 @@ export default function EnginePage() {
             dispatch(pushNewResponse({ response, prompt: formData }));
             dispatch(nextPage());
         } catch (error) {
-            console.log(error)
+            console.log(error);
         }
         dispatch(setIsLoading(false));
     }

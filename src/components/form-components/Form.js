@@ -2,7 +2,8 @@ import React from 'react'
 import { useSelector } from 'react-redux';
 import PageDisplay from './PageDisplay';
 import ProgressBar from 'react-bootstrap/ProgressBar';
-import { Col, Row } from 'react-bootstrap';
+import Col from 'react-bootstrap/Col';
+import Row from 'react-bootstrap/Row';
 
 export default function Form() {
 
@@ -11,7 +12,7 @@ export default function Form() {
     const percent = useSelector((state) => state.pageInfo.percent);
 
     return (
-        <div className='container '>
+        <main className='container'>
             <Row>
                 <h3 className='mb-2'>{titles[index]}</h3>
             </Row>
@@ -23,6 +24,6 @@ export default function Form() {
                     <ProgressBar className='mb-2' animated now={percent} />
                 </Col>
             </Row>
-        </div>
+        </main>
     )
 }

@@ -21,35 +21,35 @@ export default function CustomInput({ placeholder, controlId, storeKey, actionCB
 
     return (
         <>
-            <Form.Group className="mb-2 form-group" controlId={controlId}>
+            <Form.Group className='mb-2 form-group' controlId={controlId}>
                 <InputGroup>
                     <Form.Control
+                        aria-label={titles[index]}
                         type='text'
                         placeholder={placeholder}
                         value={value}
                         onChange={(e) => dispatch(actionCB(e.target.value))}
                         onKeyDown={handleKeyDown}
-                        aria-label={titles[index]}
                     />
                     <Button
-                        variant="outline-light"
+                        aria-label='Previous Page'
+                        variant='outline-light'
                         size='sm'
                         onClick={() => dispatch(previousPage())}
                         disabled={index === 0}
-                        aria-label="Previous Page"
                     >
                         Prev
                     </Button>
                     <Button
-                        variant="outline-light"
+                        aria-label='Next Page'
+                        variant='outline-light'
                         size='sm'
                         onClick={() => dispatch(nextPage())}
-                        aria-label="Next Page"
                     >
                         Next
                     </Button>
                 </InputGroup>
-                <Form.Text className="text-muted">
+                <Form.Text className='text-muted'>
                     {instruction}
                 </Form.Text>
             </Form.Group >
