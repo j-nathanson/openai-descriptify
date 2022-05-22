@@ -8,11 +8,8 @@
     font-family: $font-stack;
 }
 
-// check to see if thise deleting or use in media queries
-// .prompt {
-//     p {
-//         margin: 0;
-//     }
-// }
-
-// make cornballer joke
+@include media-breakpoint-up(lg) {
+    .app-container{
+        width: 700px;
+    }
+}

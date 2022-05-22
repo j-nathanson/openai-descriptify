@@ -5,8 +5,7 @@ import Responses from './components/response-components/Responses.js';
 
 function App() {
   return (
-    <div className="container">
-
+    <div className="container app-container">
       <Header />
       <Form />
       <LoadingComponent />
