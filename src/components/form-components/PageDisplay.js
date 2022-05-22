@@ -11,7 +11,7 @@ export default function PageDisplay() {
         case 0:
             return (
                 <CustomInput
-                    placeholder='A cat necklace'
+                    placeholder='A cornball maker'
                     controlId='formBasicDescription'
                     storeKey='basicDescription'
                     actionCB={setBasicDescription}
@@ -20,7 +20,7 @@ export default function PageDisplay() {
         case 1:
             return (
                 <CustomInput
-                    placeholder='Sweet Dreams Kitty Pendant'
+                    placeholder='The CornBaller'
                     controlId='formProductName'
                     storeKey='productName'
                     actionCB={setProductName}
@@ -30,7 +30,7 @@ export default function PageDisplay() {
         case 2:
             return (
                 <CustomInput
-                    placeholder='Cat lovers, children, fine crafts enthusiasts.'
+                    placeholder='families, foodies, corn enthusiasts'
                     controlId='formIdealUsers'
                     storeKey='idealUsers'
                     actionCB={setIdealUsers}
@@ -40,7 +40,7 @@ export default function PageDisplay() {
         case 3:
             return (
                 <CustomInput
-                    placeholder='Sterling silver, 11-inch chain, handcrafted'
+                    placeholder='4-inch fry basket, 3,5 liter fryer'
                     controlId='formFeatures'
                     storeKey='features'
                     actionCB={setFeatures}
@@ -50,7 +50,7 @@ export default function PageDisplay() {
         case 4:
             return (
                 <CustomInput
-                    placeholder='fashionable, quirky, shows you are a cat person'
+                    placeholder='Totally safe to use, makes a delicious and healthy snack'
                     controlId='formBenefits'
                     storeKey='benefits'
                     actionCB={setBenefits}
