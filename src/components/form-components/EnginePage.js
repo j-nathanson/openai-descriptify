@@ -26,7 +26,8 @@ export default function EnginePage() {
     }
 
     return (
-        <InputGroup className='mb-2'>
+        <div className="mb-2 form-group">
+        <InputGroup>
             <Form.Select
                 onChange={(e) => dispatch(setEngine(e.target.value))}
                 aria-label="Select which of GTP's engine to use"
@@ -50,6 +51,6 @@ export default function EnginePage() {
             >
                 Submit</Button>
         </InputGroup>
-
+</div>
     )
 }

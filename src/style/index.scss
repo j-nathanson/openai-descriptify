@@ -11,3 +11,16 @@
         margin: 0;
     }
 }
+
+h3 {
+    min-height: 55px;
+}
+
+.responseCard {
+    border: 1px $secondary solid;
+    border-radius: .5rem;
+}
+
+.form-group {
+    min-height: 100px;
+}

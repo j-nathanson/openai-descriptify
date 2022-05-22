@@ -19,7 +19,7 @@ export default function ResponseCard({ item }) {
         }, 5000)
     }
     return (
-        <div className="container border p-2 ">
+        <div className="container pt-2 mb-2 responseCard">
             <Row className='mb-2'>
                 <Col xs={12} sm={3}><h5>Prompt</h5></Col>
                 <div className="col prompt">

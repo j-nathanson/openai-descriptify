@@ -11,7 +11,7 @@ export default function Form() {
     const percent = useSelector((state) => state.pageInfo.percent);
 
     return (
-        <div className='container'>
+        <div className='container '>
             <Row>
                 <h3 className='mb-2'>{titles[index]}</h3>
             </Row>
