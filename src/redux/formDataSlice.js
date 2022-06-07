@@ -6,7 +6,7 @@ const initialState = {
     idealUsers: '',
     benefits: '',
     features: '',
-    engine: 'text-curie-001'
+    engine: 'text-davinci-002'
 }
 
 export const formDataSlice = createSlice({

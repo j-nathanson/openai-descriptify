@@ -34,7 +34,7 @@ export default function EnginePage() {
                 value={engine}
             >
                 <option value="text-davinci-002">"text-davinci-002" - Most Capable</option>
-                <option value="text-curie-001">"text-curie-001" - Very Capable (default)</option>
+                <option value="text-curie-001">"text-curie-001" - Very Capable</option>
                 <option value="text-babbage-001">"text-babbage-001" - Less Capable</option>
                 <option value="text-ada-001">"text-ada-001"- Least Capable</option>
             </Form.Select>
